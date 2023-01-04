@@ -183,8 +183,8 @@ postinstall(){
     kubectl delete secret ${KUBECONFIG_NAME} || true
     kubectl create secret generic ${KUBECONFIG_NAME} --from-file=config=./kubeconfig
     export PASSWORD=$(echo ${CLUSTER_NAME} | md5sum | awk '{print $1}')
-    ocm create idp -n localauth -t htpasswd --username kubeadmin --password ${PASSWORD} -c ${CLUSTER_NAME}
-    ocm create user kubeadmin -c "$(_get_cluster_id ${CLUSTER_NAME})" --group=cluster-admins
+    ocm create idp -n localauth -t htpasswd --username kubeadmin --password ${PASSWORD} -c ${CLUSTER_NAME} || true
+    ocm create user kubeadmin -c "$(_get_cluster_id ${CLUSTER_NAME})" --group=cluster-admins || true
 
     kubectl delete secret ${KUBEADMIN_NAME} || true
     kubectl create secret generic ${KUBEADMIN_NAME} --from-literal=KUBEADMIN_PASSWORD=${PASSWORD}

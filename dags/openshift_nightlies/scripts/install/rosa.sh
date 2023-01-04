@@ -268,8 +268,8 @@ postinstall(){
     kubectl create secret generic ${KUBECONFIG_NAME} --from-file=config=./kubeconfig
     if [[ $INSTALL_METHOD == "osd" ]]; then
         export PASSWORD=$(echo ${CLUSTER_NAME} | md5sum | awk '{print $1}')
-        ocm create idp -n localauth -t htpasswd --username kubeadmin --password ${PASSWORD} -c ${CLUSTER_NAME}
-        ocm create user kubeadmin -c "$(_get_cluster_id ${CLUSTER_NAME})" --group=cluster-admins
+        ocm create idp -n localauth -t htpasswd --username kubeadmin --password ${PASSWORD} -c ${CLUSTER_NAME} || true
+        ocm create user kubeadmin -c "$(_get_cluster_id ${CLUSTER_NAME})" --group=cluster-admins || true
         if [[ $WORKLOAD_TYPE != "null" ]]; then
             # create machinepool for workload nodes
             ocm create machinepool -c ${CLUSTER_NAME} --instance-type ${WORKLOAD_TYPE} --labels 'node-role.kubernetes.io/workload=' --taints 'role=workload:NoSchedule' --replicas 3 workload
