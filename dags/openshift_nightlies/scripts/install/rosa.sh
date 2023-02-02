@@ -257,6 +257,7 @@ install(){
             curl -k https://gist.githubusercontent.com/krishvoor/34760584641e6bb06b75bcbdd076c639/raw/0325a8c21aeeb159afdcd8df16bb712a596c9f40/payload.json > payload_test.json
             cat payload_test.json
             envsubst < payload_test.json > payload.json
+            cat payload.json
             ocm post /api/clusters_mgmt/v1/clusters --body payload.json --debug
         fi
 
