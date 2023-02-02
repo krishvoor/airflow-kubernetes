@@ -41,7 +41,8 @@ class AbstractOpenshiftInstaller(ABC):
         self.openstack_creds = var_loader.get_secret("openstack_creds", deserialize_json=True)
         self.rosa_creds = var_loader.get_secret("rosa_creds", deserialize_json=True)
         self.rhacs_creds = var_loader.get_secret("rhacs_creds", deserialize_json=True)
-        self.rogcp_creds = var_loader.get_secret("rogcp_creds") 
+        self.rogcp_creds = var_loader.get_secret("rogcp_creds")
+        self.github_username = var_loader.get_git_user()
         self.exec_config = executor.get_default_executor_config(self.dag_config)
 
         # Merge all variables, prioritizing Airflow Secrets over git based vars
@@ -98,6 +99,7 @@ class AbstractOpenshiftInstaller(ABC):
             "OPENSHIFT_INSTALL_PULL_SECRET": self.ocp_pull_secret,
             "AZ_MANAGED_SERVICES": self.azure_creds,
             "GCP_MANAGED_SERVICES_TOKEN": self.rogcp_creds,
+            "GITHUB_USERNAME": self.github_username,
             "AWS_REGION": self.config['aws_region_for_openshift'],
             **self._insert_kube_env()
         }

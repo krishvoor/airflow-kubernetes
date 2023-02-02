@@ -252,7 +252,7 @@ install(){
         if [ $AWS_AUTHENTICATION_METHOD == "sts" ] ; then
             INSTALLATION_PARAMS="${INSTALLATION_PARAMS} --sts -m auto --yes"
         fi
-        rosa create cluster --cluster-name ${CLUSTER_NAME} --version "${ROSA_VERSION}" --channel-group=${MANAGED_CHANNEL_GROUP} --multi-az --compute-machine-type ${COMPUTE_WORKERS_TYPE} --compute-nodes ${COMPUTE_WORKERS_NUMBER} --network-type ${NETWORK_TYPE} ${INSTALLATION_PARAMS}
+        rosa create cluster --tags=User:${GITHUB_USERNAME} --cluster-name ${CLUSTER_NAME} --version "${ROSA_VERSION}" --channel-group=${MANAGED_CHANNEL_GROUP} --multi-az --compute-machine-type ${COMPUTE_WORKERS_TYPE} --compute-nodes ${COMPUTE_WORKERS_NUMBER} --network-type ${NETWORK_TYPE} ${INSTALLATION_PARAMS}
     fi
     _wait_for_cluster_ready ${CLUSTER_NAME}
     postinstall
@@ -374,7 +374,9 @@ if [[ "$operation" == "install" ]]; then
         printf "INFO: Cluster not found, installing..."
         install
         index_metadata
-        _wait_for_workload_nodes_ready ${CLUSTER_NAME}
+        if [[ $WORKLOAD_TYPE != "null" ]]; then
+          _wait_for_workload_nodes_ready ${CLUSTER_NAME}
+        fi
     elif [ "${CLUSTER_STATUS}" == "ready" ] ; then
         printf "INFO: Cluster ${CLUSTER_NAME} already installed and ready, reusing..."
 	    postinstall
