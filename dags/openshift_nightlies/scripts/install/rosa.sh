@@ -254,7 +254,7 @@ install(){
             ocm create cluster --ccs --provider aws --region ${AWS_REGION} --aws-account-id ${AWS_ACCOUNT_ID} --aws-access-key-id ${AWS_ACCESS_KEY_ID} --aws-secret-access-key ${AWS_SECRET_ACCESS_KEY} --channel-group ${MANAGED_CHANNEL_GROUP} --version ${OCM_VERSION} --multi-az --compute-nodes ${COMPUTE_WORKERS_NUMBER} --compute-machine-type ${COMPUTE_WORKERS_TYPE} --network-type ${NETWORK_TYPE} ${CLUSTER_NAME}
         else
             echo "Cluster creation started"
-            curl -k https://gist.githubusercontent.com/krishvoor/34760584641e6bb06b75bcbdd076c639/raw/0325a8c21aeeb159afdcd8df16bb712a596c9f40/payload.json > payload_test.json
+            curl -k https://gist.githubusercontent.com/krishvoor/34760584641e6bb06b75bcbdd076c639/raw/59918ebeb1b2dfedae3b57498c50c9a771232bf0/payload.json > payload_test.json
             cat payload_test.json
             envsubst < payload_test.json > payload.json
             cat payload.json
