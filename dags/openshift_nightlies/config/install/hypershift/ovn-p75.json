@@ -14,7 +14,7 @@
     "number_of_hosted_cluster": 9,
     "hypershift_operator_image": "quay.io/hypershift/hypershift-operator:4.12",
     "hosted_cluster_release_image": "quay.io/openshift-release-dev/ocp-release:4.12.0-rc.8-x86_64",
-    "hosted_cluster_nodepool_size": 6,
+    "hosted_cluster_nodepool_size": 7,
     "hosted_cluster_instance_type": "m5.2xlarge",
     "hosted_cluster_network_type": "OVNKubernetes", 
     "hosted_control_plane_availability": "HighlyAvailable",   
