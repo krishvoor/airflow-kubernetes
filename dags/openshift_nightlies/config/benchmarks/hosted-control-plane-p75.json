@@ -1,26 +1,22 @@
 {
     "benchmarks": [
         {
-            "name": "cluster-density-ms-m6a",
+            "name": "node-density-m6a",
             "workload": "kube-burner",
-            "trigger_rule": "all_done",
             "command": "./run.sh",
             "env": {
-                "WORKLOAD": "cluster-density-ms",
-                "JOB_ITERATIONS": "75",
-                "CHURN": "true",
-                "CHURN_DURATION": "30m",
-                "CHURN_DELAY": "30s",
-                "CHURN_PERCENT": "10",
+                "WORKLOAD": "node-density",
+                "PODS_PER_NODE": "245",
+                "NODE_COUNT": "7",
                 "JOB_TIMEOUT": "18000",
-                "STEP_SIZE": "2m",
-                "HYPERSHIFT": "true",
-                "METRICS_PROFILE": "metrics-profiles/hypershift-metrics.yaml",
                 "QPS": "20",
                 "BURST": "20",
-                "LOG_LEVEL": "info",
+                "STEP_SIZE": "30s",
+                "HYPERSHIFT":"true",
+                "METRICS_PROFILE":"metrics-profiles/hypershift-metrics.yaml",
+                "LOG_LEVEL": "debug",
+                "CLEANUP_WHEN_FINISH": "false",
                 "PLATFORM_ALERTS": "false",
-                "CLEANUP_WHEN_FINISH": "true",
                 "CLEANUP": "true",
                 "MUST_GATHER_EACH_TASK": "false"
             }
