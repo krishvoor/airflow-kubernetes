@@ -15,7 +15,7 @@
                 "HYPERSHIFT":"true",
                 "METRICS_PROFILE":"metrics-profiles/hypershift-metrics.yaml",
                 "LOG_LEVEL": "info",
-                "CLEANUP_WHEN_FINISH": "true",
+                "CLEANUP_WHEN_FINISH": "false",
                 "PLATFORM_ALERTS": "false",
                 "CLEANUP": "true",
                 "MUST_GATHER_EACH_TASK": "false"
