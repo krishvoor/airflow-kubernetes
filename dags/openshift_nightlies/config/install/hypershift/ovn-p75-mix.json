@@ -11,7 +11,7 @@
     "openshift_master_instance_type": "m6a.2xlarge",
     "openshift_worker_instance_type": "m6i.4xlarge",
     "openshift_infra_instance_type": "r6a.xlarge",
-    "number_of_hosted_cluster": 1,
+    "number_of_hosted_cluster": 9,
     "hypershift_operator_image": "quay.io/hypershift/hypershift-operator:4.12",
     "hosted_cluster_release_image": "quay.io/openshift-release-dev/ocp-release:4.12.0-rc.8-x86_64",
     "hosted_cluster_nodepool_size": 7,
