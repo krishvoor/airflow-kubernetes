@@ -1,3 +1,25 @@
 {
-    "benchmarks": []
+    "benchmarks": [
+        {
+            "name": "node-density",
+            "workload": "kube-burner",
+            "command": "./run.sh",
+            "env": {
+                "WORKLOAD": "node-density",
+                "PODS_PER_NODE": "245",
+                "NODE_COUNT": "7",
+                "JOB_TIMEOUT": "18000",
+                "QPS": "20",
+                "BURST": "20",
+                "STEP_SIZE": "30s",
+                "HYPERSHIFT":"true",
+                "METRICS_PROFILE":"metrics-profiles/hypershift-metrics.yaml",
+                "LOG_LEVEL": "debug",
+                "CLEANUP_WHEN_FINISH": "true",
+                "PLATFORM_ALERTS": "false",
+                "CLEANUP": "false",
+                "MUST_GATHER_EACH_TASK": "false"
+            }
+        }
+    ]
 }
