@@ -133,6 +133,10 @@ platforms:
         config:
           install: rosa/rosa-hcp-ovn-data-plane.json
           benchmarks: data-plane-v2.json
+      - name: ingress-data-plane-v2
+        config:
+          install: ovn-small.json
+          benchmarks: ingress-data-plane-v2.json 
 
   rogcp:
     versions: ["4.12", "4.13"]
