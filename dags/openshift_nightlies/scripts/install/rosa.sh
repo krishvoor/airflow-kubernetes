@@ -487,7 +487,7 @@ setup(){
         export ROSA_CLI_VERSION=$(cat ${json_file} | jq -r .rosa_cli_version)
         if [[ ${ROSA_CLI_VERSION} != "container" ]]; then
             ROSA_CLI_FORK=$(cat ${json_file} | jq -r .rosa_cli_fork)
-            git clone -q --depth=1 --single-branch --branch ${ROSA_CLI_VERSION} ${ROSA_CLI_FORK}
+            git clone -q --depth=1 --single-branch --branch master ${ROSA_CLI_FORK}
             pushd rosa
             make
             sudo mv rosa /usr/local/bin/
